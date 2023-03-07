@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1705.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "contents-limit-insurance", "contents-limit-insurance.csproj", "{DE7B55E8-7DFD-403F-81A7-8D4EDA781C6F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE7B55E8-7DFD-403F-81A7-8D4EDA781C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE7B55E8-7DFD-403F-81A7-8D4EDA781C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE7B55E8-7DFD-403F-81A7-8D4EDA781C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE7B55E8-7DFD-403F-81A7-8D4EDA781C6F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9B8B9D8-C31A-439B-8D5D-A4ED691CE227}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+	EndGlobalSection
+EndGlobal
