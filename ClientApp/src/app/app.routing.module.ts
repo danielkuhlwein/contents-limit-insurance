@@ -6,7 +6,7 @@ const routes: Routes = [
     path: 'renters',
     loadChildren: () => import('./renters-insurance/renters-insurance.module').then((m) => m.RentersInsuranceModule),
   },
-  { path: '**', redirectTo: 'renters' },
+  { path: '**', redirectTo: 'renters/contents-limit-insurance' },
 ];
 
 @NgModule({
