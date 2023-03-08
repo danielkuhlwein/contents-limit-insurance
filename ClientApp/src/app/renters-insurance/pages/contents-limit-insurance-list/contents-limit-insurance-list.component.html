@@ -1,31 +1,46 @@
 <div class="drop-shadow-xl rounded-lg mt-3 overflow-hidden">
-  <mat-table #table [dataSource]="dataSource" matSort>
-    <ng-container matColumnDef="category">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Category </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{ row.category }} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="item">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Item </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{ row.item }} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="value">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Value </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{ row.value }} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="action">
-      <mat-header-cell *matHeaderCellDef> </mat-header-cell>
-      <mat-cell *matCellDef="let row">
+  <div class="header d-flex align-items-center w-100 text-xs uppercase text-white font-medium">
+    <button mat-icon-button (click)="expandAllNodes()">
+      <mat-icon class="transition-all" [class.rotate-90]="allNodesExpanded"> chevron_right </mat-icon>
+    </button>
+    <div class="w-50 opacity-75">Insurable Items</div>
+    <div class="w-50 opacity-75">
+      <div>Price</div>
+    </div>
+  </div>
+  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+    <!-- Categories -->
+    <mat-tree-node
+      *matTreeNodeDef="let node; when: hasChild"
+      matTreeNodePadding
+      class="cursor-pointer font-medium hover:bg-neutral-600"
+      matTreeNodeToggle
+    >
+      <button mat-icon-button matTreeNodeToggle>
+        <mat-icon class="transition-all" [class.rotate-90]="treeControl.isExpanded(node)"> chevron_right </mat-icon>
+      </button>
+      <div class="d-flex align-items-center w-100">
+        <div class="w-50">{{ node.name }}</div>
+        <div class="w-50">{{ node.categoryPrice | currency }}</div>
+      </div>
+    </mat-tree-node>
+    <!-- Insurance Items -->
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="relative">
+      <div class="d-flex align-items-center w-100 pl-12">
+        <div class="w-50">{{ node.name }}</div>
+        <div class="w-50">
+          <div class="w-24 text-right">{{ node.price | currency }}</div>
+        </div>
+      </div>
+      <div class="absolute right-5">
         <button mat-icon-button color="warn"><mat-icon>delete</mat-icon></button>
-      </mat-cell>
-    </ng-container>
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-  </mat-table>
-  <mat-paginator
-    [length]="dataSource.data.length"
-    [pageSize]="10"
-    [pageSizeOptions]="[10, 25, 50, 100]"
-    (page)="pageEvent = $event"
-  >
-  </mat-paginator>
+      </div>
+    </mat-tree-node>
+  </mat-tree>
+  <div class="footer d-flex align-items-center w-100 text-base uppercase text-white font-medium">
+    <!-- use a disabled button to provide the same padding as branches -->
+    <button mat-icon-button disabled></button>
+    <div class="w-50 opacity-75">Total</div>
+    <div class="w-50 opacity-75">{{ totalPrice | currency }}</div>
+  </div>
 </div>

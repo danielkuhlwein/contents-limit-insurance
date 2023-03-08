@@ -1,0 +1,26 @@
+@import 'variables';
+
+.mat-tree-node {
+  border-bottom-width: 1px;
+  border-bottom-color: $line-grey;
+
+  &:last-of-type {
+    border-bottom-width: 0;
+  }
+}
+
+.header,
+.footer {
+  height: 48px;
+  background-color: $card-grey;
+}
+
+.header {
+  border-bottom-width: 2px;
+  border-bottom-color: $line-grey;
+}
+
+.footer {
+  border-top-width: 2px;
+  border-top-color: $line-grey;
+}
