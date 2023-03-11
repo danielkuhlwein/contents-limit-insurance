@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 
 const routes: Routes = [
   {
-    path: 'renters',
-    loadChildren: () => import('./renters-insurance/renters-insurance.module').then((m) => m.RentersInsuranceModule),
+    path: 'contents-limit-insurance',
+    loadChildren: () => import('./contents-limit-insurance/contents-limit-insurance.module').then((m) => m.ContentsLimitInsuranceModule),
   },
-  { path: '**', redirectTo: 'renters/contents-limit-insurance' },
+  { path: '**', redirectTo: 'contents-limit-insurance' },
 ];
 
 @NgModule({

@@ -25,6 +25,6 @@ namespace Redis
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        object RemoveData(string key);
+        bool RemoveData(string key);
     }
 }

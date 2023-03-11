@@ -31,7 +31,7 @@ namespace Redis
 			return isSet;
 		}
 
-		public object RemoveData(string key)
+		public bool RemoveData(string key)
 		{
 			bool _isKeyExist = _db.KeyExists(key);
 			if (_isKeyExist == true)
@@ -56,10 +56,10 @@ namespace Redis
 				"Kitchen",
 				"Clothing",
 				"Jewelry",
-				"ArtAndCollectibles",
-				"SportsEquipment",
-				"MusicalInstruments",
-				"BooksAndMedia",
+				"Art And Collectibles",
+				"Sports Equipment",
+				"Musical Instruments",
+				"Books And Media",
 				"Other"
 			};
 			var categories = new List<ContentsLimitInsuranceCategory>();
@@ -80,63 +80,63 @@ namespace Redis
 				{
 					Id = 1,
 					Name = "TV",
-					Price = 2000,
+					Value = 2000,
 					Category = categories.Find(x => x.Name == "Electronics")
 				},
 				new ContentsLimitInsurance()
 				{
 					Id = 2,
 					Name = "Playstation",
-					Price = 400,
+					Value = 400,
 					Category = categories.Find(x => x.Name == "Electronics")
 				},
 				new ContentsLimitInsurance()
 				{
 					Id = 3,
 					Name = "Stereo",
-					Price = 1600,
+					Value = 1600,
 					Category = categories.Find(x => x.Name == "Electronics")
 				},
 				new ContentsLimitInsurance()
 				{
 					Id = 4,
 					Name = "Shirts",
-					Price = 1100,
-					Category = categories.Find(x => x.Name == "Clothing")
-				},
-				new ContentsLimitInsurance()
-				{
-					Id = 4,
-					Name = "Jeans",
-					Price = 1100,
+					Value = 1100,
 					Category = categories.Find(x => x.Name == "Clothing")
 				},
 				new ContentsLimitInsurance()
 				{
 					Id = 5,
-					Name = "Pots and Pans",
-					Price = 3000,
-					Category = categories.Find(x => x.Name == "Kitchen")
+					Name = "Jeans",
+					Value = 1100,
+					Category = categories.Find(x => x.Name == "Clothing")
 				},
 				new ContentsLimitInsurance()
 				{
 					Id = 6,
-					Name = "Flatware",
-					Price = 500,
+					Name = "Pots and Pans",
+					Value = 3000,
 					Category = categories.Find(x => x.Name == "Kitchen")
 				},
 				new ContentsLimitInsurance()
 				{
 					Id = 7,
-					Name = "Knife Set",
-					Price = 500,
+					Name = "Flatware",
+					Value = 500,
 					Category = categories.Find(x => x.Name == "Kitchen")
 				},
 				new ContentsLimitInsurance()
 				{
 					Id = 8,
+					Name = "Knife Set",
+					Value = 500,
+					Category = categories.Find(x => x.Name == "Kitchen")
+				},
+				new ContentsLimitInsurance()
+				{
+					Id = 9,
 					Name = "Misc",
-					Price = 1000,
+					Value = 1000,
 					Category = categories.Find(x => x.Name == "Kitchen")
 				},
 			};

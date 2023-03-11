@@ -1,6 +1,6 @@
 export interface InsuranceItemNode {
+  id: number;
   name: string;
-  price: number;
-  categoryPrice: number;
+  value: number;
   children?: InsuranceItemNode[];
 }

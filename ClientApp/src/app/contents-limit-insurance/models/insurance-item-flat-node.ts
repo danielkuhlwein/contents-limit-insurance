@@ -1,7 +1,7 @@
 export interface InsuranceItemFlatNode {
+  id: number;
   name: string;
-  price: number;
-  categoryPrice: number;
+  value: number;
   level: number;
   expandable: boolean;
 }
