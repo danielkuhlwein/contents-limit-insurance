@@ -43,7 +43,7 @@ public class ContentsLimitInsuranceRepo : IContentsLimitInsuranceRepo
 	public long AddItem(ContentsLimitInsurance contentsLimitInsurance)
 	{
 		var contentsLimitInsuranceItems = _cacheService.GetData<IEnumerable<ContentsLimitInsurance>>(_itemsKey);
-		contentsLimitInsurance.Id = contentsLimitInsuranceItems.Max(x => x.Id) + 1;
+		contentsLimitInsurance.Id = contentsLimitInsuranceItems.Any() ? contentsLimitInsuranceItems.Max(x => x.Id) + 1 : 1;
 		contentsLimitInsuranceItems = contentsLimitInsuranceItems.Append(contentsLimitInsurance);
 		_cacheService.SetData(_itemsKey, contentsLimitInsuranceItems);
 		return contentsLimitInsurance.Id;
