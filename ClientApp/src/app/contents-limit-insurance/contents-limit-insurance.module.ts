@@ -1,14 +1,17 @@
-import { ReactiveFormsModule } from '@angular/forms';
+import * as contentsLimitInsuranceStore from './store';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MaterialModule } from 'src/app/material.module';
-import { ContentsLimitInsuranceListComponent } from 'src/app/contents-limit-insurance/pages/contents-limit-insurance-list/contents-limit-insurance-list.component';
-import { ContentsLimitInsuranceRoutingModule } from 'src/app/contents-limit-insurance/contents-limit-insurance.routing.module';
-import { ContentsLimitInsuranceEffects } from 'src/app/contents-limit-insurance/store/contents-limit-insurance.effects';
-import * as contentsLimitInsuranceStore from './store';
+import { ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { AddContentsLimitInsuranceItemDialogComponent } from 'src/app/contents-limit-insurance/components/add-contents-limit-insurance-item-dialog/add-contents-limit-insurance-item-dialog.component';
+import {
+  AddContentsLimitInsuranceItemDialogComponent
+} from 'src/app/contents-limit-insurance/components/add-contents-limit-insurance-item-dialog/add-contents-limit-insurance-item-dialog.component';
+import { ContentsLimitInsuranceRoutingModule } from 'src/app/contents-limit-insurance/contents-limit-insurance.routing.module';
+import { ContentsLimitInsuranceListComponent } from 'src/app/contents-limit-insurance/pages/contents-limit-insurance-list/contents-limit-insurance-list.component';
+import { ContentsLimitInsuranceEffects } from 'src/app/contents-limit-insurance/store/contents-limit-insurance.effects';
+import { MaterialModule } from 'src/app/material.module';
 
 @NgModule({
   imports: [

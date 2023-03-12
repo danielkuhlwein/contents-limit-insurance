@@ -24,7 +24,8 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/assets"
+              "src/assets",
+              "src/favicon.ico"
             ],
             "styles": [
               "@angular/material/prebuilt-themes/purple-green.css",
@@ -96,7 +97,8 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
-              "src/assets"
+              "src/assets",
+              "src/favicon.ico"
             ],
             "styles": [
               "@angular/material/prebuilt-themes/purple-green.css",

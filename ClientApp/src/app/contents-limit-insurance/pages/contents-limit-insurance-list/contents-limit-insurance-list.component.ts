@@ -11,7 +11,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { Store } from '@ngrx/store';
-import { map, Observable, Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { ContentsLimitInsurance } from 'src/app/api/models';
 import { AddContentsLimitInsuranceItemDialogComponent } from 'src/app/contents-limit-insurance/components/add-contents-limit-insurance-item-dialog/add-contents-limit-insurance-item-dialog.component';
 import { InsuranceItemFlatNode } from 'src/app/contents-limit-insurance/models/insurance-item-flat-node';
@@ -76,6 +76,10 @@ export class ContentsLimitInsuranceListComponent implements OnInit, OnDestroy {
       });
   }
 
+  /**
+   * Build the tree from the flat list of items
+   * @param items The flat list of items
+   */
   buildTree(items: ContentsLimitInsurance[]) {
     const categories = items.map((x) => x.category);
     const tree: InsuranceItemNode[] = [];

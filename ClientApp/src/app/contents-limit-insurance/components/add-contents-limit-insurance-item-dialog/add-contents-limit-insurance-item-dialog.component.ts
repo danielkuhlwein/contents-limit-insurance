@@ -1,14 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ContentsLimitInsuranceCategory } from 'src/app/api/models';
-import {
-  addContentsLimitInsuranceItem,
-  getContentsLimitInsuranceCategoriesList,
-} from 'src/app/contents-limit-insurance/store/contents-limit-insurance.actions';
+import { getContentsLimitInsuranceCategoriesList } from 'src/app/contents-limit-insurance/store/contents-limit-insurance.actions';
 import { contentsLimitInsurance } from 'src/app/contents-limit-insurance/store/contents-limit-insurance.selectors';
 import ContentsLimitInsuranceState from 'src/app/contents-limit-insurance/store/contents-limit-insurance.state';
 

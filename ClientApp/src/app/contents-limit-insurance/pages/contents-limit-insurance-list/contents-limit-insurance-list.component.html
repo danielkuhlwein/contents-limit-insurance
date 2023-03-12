@@ -1,4 +1,4 @@
-<div class="flex flex-column mb-3">
+<div class="pb-3">
   <div class="drop-shadow-xl rounded-lg mt-3 overflow-hidden max-w-4xl text-white bg-neutral-700 p-4">
     <div class="flex items-center">
       <mat-icon class="mr-3">calculate</mat-icon>
@@ -24,62 +24,62 @@
       Sample Data
     </button>
   </div>
-</div>
 
-<div class="drop-shadow-xl rounded-lg mt-3 overflow-hidden relative">
-  <div class="header flex items-center w-100 text-xs uppercase text-white font-medium">
-    <button mat-icon-button (click)="expandAllNodes()">
-      <mat-icon class="transition-all" [class.rotate-90]="allNodesExpanded"> chevron_right </mat-icon>
-    </button>
-    <div class="w-50 opacity-75">Insurable Items</div>
-    <div class="w-50 opacity-75">
-      <div>Value</div>
-    </div>
-  </div>
-
-  <!-- Empty State -->
-  <div *ngIf="!dataSource.data.length" class="bg-neutral-700 text-white flex p-4">
-    <i class="mx-auto opacity-75">Add an item to get started...</i>
-  </div>
-
-  <!-- Loading State -->
-  <div *ngIf="loading$ | async" class="flex absolute top-0 z-10 w-full h-full bg-neutral-600/50">
-    <mat-spinner mode="indeterminate" [diameter]="40" class="m-auto"> </mat-spinner>
-  </div>
-
-  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-    <!-- Categories -->
-    <mat-tree-node
-      *matTreeNodeDef="let node; when: hasChild"
-      matTreeNodePadding
-      class="cursor-pointer font-medium bg-neutral-600 hover:bg-neutral-500"
-      matTreeNodeToggle
-    >
-      <button mat-icon-button matTreeNodeToggle>
-        <mat-icon class="transition-all" [class.rotate-90]="treeControl.isExpanded(node)"> chevron_right </mat-icon>
+  <div class="drop-shadow-xl rounded-lg mt-3 overflow-hidden relative">
+    <div class="header flex items-center w-100 text-xs uppercase text-white font-medium">
+      <button mat-icon-button (click)="expandAllNodes()">
+        <mat-icon class="transition-all" [class.rotate-90]="allNodesExpanded"> chevron_right </mat-icon>
       </button>
-      <div class="flex items-center w-100">
-        <div class="w-50">{{ node.name }}</div>
-        <div class="w-50">{{ node.value | currency }}</div>
+      <div class="w-50 opacity-75">Insurable Items</div>
+      <div class="w-50 opacity-75">
+        <div>Value</div>
       </div>
-    </mat-tree-node>
-    <!-- Insurance Items -->
-    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="relative">
-      <div class="flex items-center w-100 pl-12">
-        <div class="w-50">{{ node.name }}</div>
-        <div class="w-50">
-          <div class="w-24 text-right">{{ node.value | currency }}</div>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="!dataSource.data.length" class="bg-neutral-700 text-white flex p-4">
+      <i class="mx-auto opacity-75">Add an item to get started...</i>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="loading$ | async" class="flex absolute top-0 z-10 w-full h-full bg-neutral-600/50">
+      <mat-spinner mode="indeterminate" [diameter]="40" class="m-auto"> </mat-spinner>
+    </div>
+
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+      <!-- Categories -->
+      <mat-tree-node
+        *matTreeNodeDef="let node; when: hasChild"
+        matTreeNodePadding
+        class="cursor-pointer font-medium bg-neutral-600 hover:bg-neutral-500"
+        matTreeNodeToggle
+      >
+        <button mat-icon-button matTreeNodeToggle>
+          <mat-icon class="transition-all" [class.rotate-90]="treeControl.isExpanded(node)"> chevron_right </mat-icon>
+        </button>
+        <div class="flex items-center w-100">
+          <div class="w-50">{{ node.name }}</div>
+          <div class="w-50">{{ node.value | currency }}</div>
         </div>
-      </div>
-      <div class="absolute right-5" (click)="deleteItem(node.id)">
-        <button mat-icon-button color="warn"><mat-icon>delete</mat-icon></button>
-      </div>
-    </mat-tree-node>
-  </mat-tree>
-  <div class="footer flex items-center w-100 text-base uppercase text-white font-medium">
-    <!-- use a disabled button to provide the same padding as branches -->
-    <button mat-icon-button disabled></button>
-    <div class="w-50 opacity-75">Total</div>
-    <div class="w-50 opacity-75">{{ totalValue | currency }}</div>
+      </mat-tree-node>
+      <!-- Insurance Items -->
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="relative">
+        <div class="flex items-center w-100 pl-12">
+          <div class="w-50">{{ node.name }}</div>
+          <div class="w-50">
+            <div class="w-24 text-right">{{ node.value | currency }}</div>
+          </div>
+        </div>
+        <div class="absolute right-5" (click)="deleteItem(node.id)">
+          <button mat-icon-button color="warn"><mat-icon>delete</mat-icon></button>
+        </div>
+      </mat-tree-node>
+    </mat-tree>
+    <div class="footer flex items-center w-100 text-base uppercase text-white font-medium">
+      <!-- use a disabled button to provide the same padding as branches -->
+      <button mat-icon-button disabled></button>
+      <div class="w-50 opacity-75">Total</div>
+      <div class="w-50 opacity-75">{{ totalValue | currency }}</div>
+    </div>
   </div>
 </div>
