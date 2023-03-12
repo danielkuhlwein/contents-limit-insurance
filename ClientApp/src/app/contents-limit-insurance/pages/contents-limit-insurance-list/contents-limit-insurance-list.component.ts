@@ -2,6 +2,7 @@ import { InsuranceItemNode } from '../../models/insurance-item-node';
 import {
   addContentsLimitInsuranceItem,
   deleteContentsLimitInsuranceItem,
+  generateSampleContentsLimitInsuranceItems,
   getContentsLimitInsuranceList,
 } from './../../store/contents-limit-insurance.actions';
 
@@ -143,6 +144,10 @@ export class ContentsLimitInsuranceListComponent implements OnInit, OnDestroy {
 
   deleteItem(id: number) {
     this.store.dispatch(deleteContentsLimitInsuranceItem({ payload: id }));
+  }
+
+  generateSampleData() {
+    this.store.dispatch(generateSampleContentsLimitInsuranceItems());
   }
 
   hasChild = (_: number, node: InsuranceItemFlatNode) => node.expandable;

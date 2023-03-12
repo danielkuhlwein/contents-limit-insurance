@@ -1,9 +1,12 @@
 import {
   addContentsLimitInsuranceItem,
-  addContentsLimitInsuranceItemComplete,
+  addContentsLimitInsuranceItemError,
   addContentsLimitInsuranceItemSuccess,
+  generateSampleContentsLimitInsuranceItems,
+  generateSampleContentsLimitInsuranceItemsError,
+  generateSampleContentsLimitInsuranceItemsSuccess,
   getContentsLimitInsuranceCategoriesList,
-  getContentsLimitInsuranceCategoriesListComplete,
+  getContentsLimitInsuranceCategoriesListError,
   getContentsLimitInsuranceCategoriesListSuccess,
 } from './contents-limit-insurance.actions';
 import ContentsLimitInsuranceState, { initialState } from './contents-limit-insurance.state';
@@ -11,10 +14,10 @@ import ContentsLimitInsuranceState, { initialState } from './contents-limit-insu
 import { Action, createReducer, MetaReducer, on } from '@ngrx/store';
 import {
   deleteContentsLimitInsuranceItem,
-  deleteContentsLimitInsuranceItemComplete,
+  deleteContentsLimitInsuranceItemError,
   deleteContentsLimitInsuranceItemSuccess,
   getContentsLimitInsuranceList,
-  getContentsLimitInsuranceListComplete,
+  getContentsLimitInsuranceListError,
   getContentsLimitInsuranceListSuccess,
 } from 'src/app/contents-limit-insurance/store/contents-limit-insurance.actions';
 
@@ -35,7 +38,7 @@ export const reducer = createReducer(
       loading: false,
     };
   }),
-  on(getContentsLimitInsuranceListComplete, (state: ContentsLimitInsuranceState) => {
+  on(getContentsLimitInsuranceListError, (state: ContentsLimitInsuranceState) => {
     return {
       ...state,
       loading: false,
@@ -61,7 +64,7 @@ export const reducer = createReducer(
       },
     };
   }),
-  on(getContentsLimitInsuranceCategoriesListComplete, (state: ContentsLimitInsuranceState) => {
+  on(getContentsLimitInsuranceCategoriesListError, (state: ContentsLimitInsuranceState) => {
     return {
       ...state,
       categories: {
@@ -85,7 +88,7 @@ export const reducer = createReducer(
       loading: false,
     };
   }),
-  on(deleteContentsLimitInsuranceItemComplete, (state: ContentsLimitInsuranceState) => {
+  on(deleteContentsLimitInsuranceItemError, (state: ContentsLimitInsuranceState) => {
     return {
       ...state,
       loading: false,
@@ -106,7 +109,26 @@ export const reducer = createReducer(
       loading: false,
     };
   }),
-  on(addContentsLimitInsuranceItemComplete, (state: ContentsLimitInsuranceState) => {
+  on(addContentsLimitInsuranceItemError, (state: ContentsLimitInsuranceState) => {
+    return {
+      ...state,
+      loading: false,
+    };
+  }),
+  on(generateSampleContentsLimitInsuranceItems, (state: ContentsLimitInsuranceState) => {
+    return {
+      ...state,
+      loading: true,
+    };
+  }),
+  on(generateSampleContentsLimitInsuranceItemsSuccess, (state: ContentsLimitInsuranceState, action) => {
+    return {
+      ...state,
+      items: action.payload,
+      loading: false,
+    };
+  }),
+  on(generateSampleContentsLimitInsuranceItemsError, (state: ContentsLimitInsuranceState) => {
     return {
       ...state,
       loading: false,

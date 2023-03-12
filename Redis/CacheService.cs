@@ -7,6 +7,9 @@ namespace Redis
 	public class CacheService : ICacheService
 	{
 		private IDatabase _db;
+		private static bool _sampleDataInserted = false;
+		private static readonly object _lock = new object();
+		private readonly int _expirationOffset = 60;
 
 		public CacheService()
 		{
@@ -17,18 +20,19 @@ namespace Redis
 		public T GetData<T>(string key)
 		{
 			var value = _db.StringGet(key);
-			if (!string.IsNullOrEmpty(value))
-			{
-				return JsonConvert.DeserializeObject<T>(value);
-			}
-			return default;
+			return value.HasValue ? JsonConvert.DeserializeObject<T>(value) : default;
 		}
 
-		public bool SetData<T>(string key, T value, DateTimeOffset expirationTime)
+		public bool SetData<T>(string key, T value, int? expirationOffset = null)
 		{
-			TimeSpan expiryTime = expirationTime.DateTime.Subtract(DateTime.Now);
-			var isSet = _db.StringSet(key, JsonConvert.SerializeObject(value), expiryTime);
-			return isSet;
+			TimeSpan expiryTime = expirationOffset != null
+				? TimeSpan.FromMinutes(expirationOffset.Value)
+				: TimeSpan.FromMinutes(_expirationOffset);
+			lock (_lock)
+			{
+				var isSet = _db.StringSet(key, JsonConvert.SerializeObject(value), expiryTime);
+				return isSet;
+			}
 		}
 
 		public bool RemoveData(string key)
@@ -44,7 +48,7 @@ namespace Redis
 		/// <summary>
 		/// For testing purposes, insert sample data into the cache
 		/// </summary>
-		private void InsertSampleData()
+		public bool InsertSampleData()
 		{
 			var expirationTime = DateTimeOffset.Now.AddMinutes(5.0);
 
@@ -70,8 +74,8 @@ namespace Redis
 					Id = i + 1,
 					Name = contentCategories[i]
 				});
-				SetData<IEnumerable<ContentsLimitInsuranceCategory>>("contentsLimitInsuranceCategories", categories, expirationTime);
 			}
+			var categorySuccess = SetData<IEnumerable<ContentsLimitInsuranceCategory>>("contentsLimitInsuranceCategories", categories);
 
 			// Items
 			var items = new List<ContentsLimitInsurance>()
@@ -140,7 +144,9 @@ namespace Redis
 					Category = categories.Find(x => x.Name == "Kitchen")
 				},
 			};
-			SetData<IEnumerable<ContentsLimitInsurance>>("contentsLimitInsuranceItems", items, expirationTime);
+			var itemSuccess = SetData<IEnumerable<ContentsLimitInsurance>>("contentsLimitInsuranceItems", items);
+
+			return categorySuccess && itemSuccess;
 		}
 	}
 }

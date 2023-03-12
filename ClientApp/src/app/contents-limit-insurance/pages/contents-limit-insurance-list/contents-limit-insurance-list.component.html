@@ -1,4 +1,4 @@
-<div class="flex flex-wrap mb-3">
+<div class="flex flex-column mb-3">
   <div class="drop-shadow-xl rounded-lg mt-3 overflow-hidden max-w-4xl text-white bg-neutral-700 p-4">
     <div class="flex items-center">
       <mat-icon class="mr-3">calculate</mat-icon>
@@ -14,8 +14,15 @@
     </div>
   </div>
 
-  <div class="ml-auto self-end mt-3">
-    <button mat-flat-button color="primary" class="ml-3" (click)="addItem()">Add</button>
+  <div class="mt-3">
+    <button mat-flat-button color="primary" class="ml-3" (click)="addItem()">
+      <mat-icon>add</mat-icon>
+      Add
+    </button>
+    <button mat-button class="ml-3" (click)="generateSampleData()">
+      <mat-icon>autorenew</mat-icon>
+      Sample Data
+    </button>
   </div>
 </div>
 

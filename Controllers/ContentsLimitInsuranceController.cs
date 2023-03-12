@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using contents_limit_insurance.Services;
+using Microsoft.AspNetCore.Mvc;
 using Models;
-using Redis;
 
 namespace contents_limit_insurance.Controllers;
 
@@ -9,66 +9,110 @@ namespace contents_limit_insurance.Controllers;
 public class ContentsLimitInsuranceController : ControllerBase
 {
 	private readonly ILogger<ContentsLimitInsuranceController> _logger;
-	private readonly ICacheService _cacheService;
-	private readonly string _itemsKey = "contentsLimitInsuranceItems";
-	private readonly string _categoriesKey = "contentsLimitInsuranceCategories";
+	private readonly IContentsLimitInsuranceService _service;
 
-	public ContentsLimitInsuranceController(ILogger<ContentsLimitInsuranceController> logger, ICacheService cacheService)
+	public ContentsLimitInsuranceController(
+		ILogger<ContentsLimitInsuranceController> logger,
+		IContentsLimitInsuranceService service)
 	{
 		_logger = logger;
-		_cacheService = cacheService;
+		_service = service;
 	}
 
 	[HttpGet]
-	public IEnumerable<ContentsLimitInsurance> Get()
+	public ActionResult<IEnumerable<ContentsLimitInsurance>> GetItems()
 	{
-		return _cacheService.GetData<IEnumerable<ContentsLimitInsurance>>(_itemsKey);
+		try
+		{
+			var result = _service.GetItems();
+			return Ok(result);
+		}
+		catch (Exception)
+		{
+			var error = "Error getting contents limit insurance items";
+			_logger.LogError(error);
+			return StatusCode(500, error);
+		}
 	}
 
 	[HttpGet("categories")]
-	public IEnumerable<ContentsLimitInsuranceCategory> GetCategories()
+	public ActionResult<IEnumerable<ContentsLimitInsuranceCategory>> GetCategories()
 	{
-		return _cacheService.GetData<IEnumerable<ContentsLimitInsuranceCategory>>(_categoriesKey);
+		try
+		{
+			var result = _service.GetCategories();
+			return Ok(result);
+		}
+		catch (Exception)
+		{
+			var error = "Error getting contents limit insurance categories";
+			_logger.LogError(error);
+			return StatusCode(500, error);
+		}
 	}
 
 	[HttpPut]
-	public bool Put(ContentsLimitInsurance contentsLimitInsurance)
+	public ActionResult<bool> UpdateItem(ContentsLimitInsurance contentsLimitInsurance)
 	{
-		var contentsLimitInsuranceItems = _cacheService.GetData<IEnumerable<ContentsLimitInsurance>>(_itemsKey);
-		var itemToUpdate = contentsLimitInsuranceItems.FirstOrDefault(x => x.Id == contentsLimitInsurance.Id);
-		if (itemToUpdate != null)
+		try
 		{
-			itemToUpdate.Category = contentsLimitInsurance.Category;
-			itemToUpdate.Name = contentsLimitInsurance.Name;
-			itemToUpdate.Value = contentsLimitInsurance.Value;
-			_cacheService.SetData(_itemsKey, contentsLimitInsuranceItems, DateTimeOffset.Now.AddMinutes(5.0));
-			return true;
+			var result = _service.UpdateItem(contentsLimitInsurance);
+			return Ok(result);
 		}
-		return false;
+		catch (Exception)
+		{
+			var error = "Error updating contents limit insurance item";
+			_logger.LogError(error);
+			return StatusCode(500, error);
+		}
 	}
 
 	[HttpPost]
-	public long Post(ContentsLimitInsurance contentsLimitInsurance)
+	public ActionResult<long> AddItem(ContentsLimitInsurance contentsLimitInsurance)
 	{
-		var contentsLimitInsuranceItems = _cacheService.GetData<IEnumerable<ContentsLimitInsurance>>(_itemsKey);
-		contentsLimitInsurance.Id = contentsLimitInsuranceItems.Max(x => x.Id) + 1;
-		contentsLimitInsuranceItems = contentsLimitInsuranceItems.Append(contentsLimitInsurance);
-		_cacheService.SetData(_itemsKey, contentsLimitInsuranceItems, DateTimeOffset.Now.AddMinutes(5.0));
-		return contentsLimitInsurance.Id;
+		try
+		{
+			var result = _service.AddItem(contentsLimitInsurance);
+			return Ok(result);
+		}
+		catch (Exception)
+		{
+			var error = "Error adding contents limit insurance item";
+			_logger.LogError(error);
+			return StatusCode(500, error);
+		}
+	}
+
+	[HttpPost("sample")]
+	public ActionResult<IEnumerable<ContentsLimitInsurance>> GenerateSampleItems()
+	{
+		try
+		{
+			var result = _service.GenerateSampleItems();
+			return Ok(result);
+		}
+		catch (Exception)
+		{
+			var error = "Error generating sample contents limit insurance items";
+			_logger.LogError(error);
+			return StatusCode(500, error);
+		}
 	}
 
 	[HttpDelete("{id}")]
-	public bool Delete(long id)
+	public ActionResult<bool> DeleteItem(long id)
 	{
-		var contentsLimitInsuranceItems = _cacheService.GetData<IEnumerable<ContentsLimitInsurance>>(_itemsKey);
-		var itemToRemove = contentsLimitInsuranceItems.FirstOrDefault(x => x.Id == id);
-		if (itemToRemove != null)
+		try
 		{
-			contentsLimitInsuranceItems = contentsLimitInsuranceItems.Where(x => x.Id != id);
-			_cacheService.SetData(_itemsKey, contentsLimitInsuranceItems, DateTimeOffset.Now.AddMinutes(5.0));
-			return true;
+			var result = _service.DeleteItem(id);
+			return Ok(result);
 		}
-		return false;
+		catch (Exception)
+		{
+			var error = "Error deleting contents limit insurance item";
+			_logger.LogError(error);
+			return StatusCode(500, error);
+		}
 	}
 }
 

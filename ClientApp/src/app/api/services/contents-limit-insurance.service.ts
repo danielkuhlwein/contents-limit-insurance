@@ -24,20 +24,20 @@ export class ContentsLimitInsuranceService extends BaseService {
   }
 
   /**
-   * Path part for operation apiContentsLimitInsuranceItemsGet
+   * Path part for operation getItems
    */
-  static readonly ApiContentsLimitInsuranceItemsGetPath = '/api/contents-limit-insurance-items';
+  static readonly GetItemsPath = '/api/contents-limit-insurance-items';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiContentsLimitInsuranceItemsGet$Plain()` instead.
+   * To access only the response body, use `getItems$Plain()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiContentsLimitInsuranceItemsGet$Plain$Response(params?: {
+  getItems$Plain$Response(params?: {
   }): Observable<StrictHttpResponse<Array<ContentsLimitInsurance>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ContentsLimitInsuranceService.ApiContentsLimitInsuranceItemsGetPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, ContentsLimitInsuranceService.GetItemsPath, 'get');
     if (params) {
     }
 
@@ -54,28 +54,28 @@ export class ContentsLimitInsuranceService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiContentsLimitInsuranceItemsGet$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `getItems$Plain$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiContentsLimitInsuranceItemsGet$Plain(params?: {
+  getItems$Plain(params?: {
   }): Observable<Array<ContentsLimitInsurance>> {
 
-    return this.apiContentsLimitInsuranceItemsGet$Plain$Response(params).pipe(
+    return this.getItems$Plain$Response(params).pipe(
       map((r: StrictHttpResponse<Array<ContentsLimitInsurance>>) => r.body as Array<ContentsLimitInsurance>)
     );
   }
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiContentsLimitInsuranceItemsGet$Json()` instead.
+   * To access only the response body, use `getItems()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiContentsLimitInsuranceItemsGet$Json$Response(params?: {
+  getItems$Response(params?: {
   }): Observable<StrictHttpResponse<Array<ContentsLimitInsurance>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ContentsLimitInsuranceService.ApiContentsLimitInsuranceItemsGetPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, ContentsLimitInsuranceService.GetItemsPath, 'get');
     if (params) {
     }
 
@@ -92,34 +92,34 @@ export class ContentsLimitInsuranceService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiContentsLimitInsuranceItemsGet$Json$Response()` instead.
+   * To access the full response (for headers, for example), `getItems$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiContentsLimitInsuranceItemsGet$Json(params?: {
+  getItems(params?: {
   }): Observable<Array<ContentsLimitInsurance>> {
 
-    return this.apiContentsLimitInsuranceItemsGet$Json$Response(params).pipe(
+    return this.getItems$Response(params).pipe(
       map((r: StrictHttpResponse<Array<ContentsLimitInsurance>>) => r.body as Array<ContentsLimitInsurance>)
     );
   }
 
   /**
-   * Path part for operation apiContentsLimitInsuranceItemsPut
+   * Path part for operation updateItem
    */
-  static readonly ApiContentsLimitInsuranceItemsPutPath = '/api/contents-limit-insurance-items';
+  static readonly UpdateItemPath = '/api/contents-limit-insurance-items';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiContentsLimitInsuranceItemsPut$Plain()` instead.
+   * To access only the response body, use `updateItem$Plain()` instead.
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  apiContentsLimitInsuranceItemsPut$Plain$Response(params?: {
+  updateItem$Plain$Response(params?: {
     body?: ContentsLimitInsurance
   }): Observable<StrictHttpResponse<boolean>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ContentsLimitInsuranceService.ApiContentsLimitInsuranceItemsPutPath, 'put');
+    const rb = new RequestBuilder(this.rootUrl, ContentsLimitInsuranceService.UpdateItemPath, 'put');
     if (params) {
       rb.body(params.body, 'application/*+json');
     }
@@ -137,30 +137,30 @@ export class ContentsLimitInsuranceService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiContentsLimitInsuranceItemsPut$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `updateItem$Plain$Response()` instead.
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  apiContentsLimitInsuranceItemsPut$Plain(params?: {
+  updateItem$Plain(params?: {
     body?: ContentsLimitInsurance
   }): Observable<boolean> {
 
-    return this.apiContentsLimitInsuranceItemsPut$Plain$Response(params).pipe(
+    return this.updateItem$Plain$Response(params).pipe(
       map((r: StrictHttpResponse<boolean>) => r.body as boolean)
     );
   }
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiContentsLimitInsuranceItemsPut$Json()` instead.
+   * To access only the response body, use `updateItem()` instead.
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  apiContentsLimitInsuranceItemsPut$Json$Response(params?: {
+  updateItem$Response(params?: {
     body?: ContentsLimitInsurance
   }): Observable<StrictHttpResponse<boolean>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ContentsLimitInsuranceService.ApiContentsLimitInsuranceItemsPutPath, 'put');
+    const rb = new RequestBuilder(this.rootUrl, ContentsLimitInsuranceService.UpdateItemPath, 'put');
     if (params) {
       rb.body(params.body, 'application/*+json');
     }
@@ -178,35 +178,35 @@ export class ContentsLimitInsuranceService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiContentsLimitInsuranceItemsPut$Json$Response()` instead.
+   * To access the full response (for headers, for example), `updateItem$Response()` instead.
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  apiContentsLimitInsuranceItemsPut$Json(params?: {
+  updateItem(params?: {
     body?: ContentsLimitInsurance
   }): Observable<boolean> {
 
-    return this.apiContentsLimitInsuranceItemsPut$Json$Response(params).pipe(
+    return this.updateItem$Response(params).pipe(
       map((r: StrictHttpResponse<boolean>) => r.body as boolean)
     );
   }
 
   /**
-   * Path part for operation apiContentsLimitInsuranceItemsPost
+   * Path part for operation addItem
    */
-  static readonly ApiContentsLimitInsuranceItemsPostPath = '/api/contents-limit-insurance-items';
+  static readonly AddItemPath = '/api/contents-limit-insurance-items';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiContentsLimitInsuranceItemsPost$Plain()` instead.
+   * To access only the response body, use `addItem$Plain()` instead.
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  apiContentsLimitInsuranceItemsPost$Plain$Response(params?: {
+  addItem$Plain$Response(params?: {
     body?: ContentsLimitInsurance
   }): Observable<StrictHttpResponse<number>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ContentsLimitInsuranceService.ApiContentsLimitInsuranceItemsPostPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, ContentsLimitInsuranceService.AddItemPath, 'post');
     if (params) {
       rb.body(params.body, 'application/*+json');
     }
@@ -224,30 +224,30 @@ export class ContentsLimitInsuranceService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiContentsLimitInsuranceItemsPost$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `addItem$Plain$Response()` instead.
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  apiContentsLimitInsuranceItemsPost$Plain(params?: {
+  addItem$Plain(params?: {
     body?: ContentsLimitInsurance
   }): Observable<number> {
 
-    return this.apiContentsLimitInsuranceItemsPost$Plain$Response(params).pipe(
+    return this.addItem$Plain$Response(params).pipe(
       map((r: StrictHttpResponse<number>) => r.body as number)
     );
   }
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiContentsLimitInsuranceItemsPost$Json()` instead.
+   * To access only the response body, use `addItem()` instead.
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  apiContentsLimitInsuranceItemsPost$Json$Response(params?: {
+  addItem$Response(params?: {
     body?: ContentsLimitInsurance
   }): Observable<StrictHttpResponse<number>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ContentsLimitInsuranceService.ApiContentsLimitInsuranceItemsPostPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, ContentsLimitInsuranceService.AddItemPath, 'post');
     if (params) {
       rb.body(params.body, 'application/*+json');
     }
@@ -265,34 +265,34 @@ export class ContentsLimitInsuranceService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiContentsLimitInsuranceItemsPost$Json$Response()` instead.
+   * To access the full response (for headers, for example), `addItem$Response()` instead.
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  apiContentsLimitInsuranceItemsPost$Json(params?: {
+  addItem(params?: {
     body?: ContentsLimitInsurance
   }): Observable<number> {
 
-    return this.apiContentsLimitInsuranceItemsPost$Json$Response(params).pipe(
+    return this.addItem$Response(params).pipe(
       map((r: StrictHttpResponse<number>) => r.body as number)
     );
   }
 
   /**
-   * Path part for operation apiContentsLimitInsuranceItemsCategoriesGet
+   * Path part for operation getCategories
    */
-  static readonly ApiContentsLimitInsuranceItemsCategoriesGetPath = '/api/contents-limit-insurance-items/categories';
+  static readonly GetCategoriesPath = '/api/contents-limit-insurance-items/categories';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiContentsLimitInsuranceItemsCategoriesGet$Plain()` instead.
+   * To access only the response body, use `getCategories$Plain()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiContentsLimitInsuranceItemsCategoriesGet$Plain$Response(params?: {
+  getCategories$Plain$Response(params?: {
   }): Observable<StrictHttpResponse<Array<ContentsLimitInsuranceCategory>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ContentsLimitInsuranceService.ApiContentsLimitInsuranceItemsCategoriesGetPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, ContentsLimitInsuranceService.GetCategoriesPath, 'get');
     if (params) {
     }
 
@@ -309,28 +309,28 @@ export class ContentsLimitInsuranceService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiContentsLimitInsuranceItemsCategoriesGet$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `getCategories$Plain$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiContentsLimitInsuranceItemsCategoriesGet$Plain(params?: {
+  getCategories$Plain(params?: {
   }): Observable<Array<ContentsLimitInsuranceCategory>> {
 
-    return this.apiContentsLimitInsuranceItemsCategoriesGet$Plain$Response(params).pipe(
+    return this.getCategories$Plain$Response(params).pipe(
       map((r: StrictHttpResponse<Array<ContentsLimitInsuranceCategory>>) => r.body as Array<ContentsLimitInsuranceCategory>)
     );
   }
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiContentsLimitInsuranceItemsCategoriesGet$Json()` instead.
+   * To access only the response body, use `getCategories()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiContentsLimitInsuranceItemsCategoriesGet$Json$Response(params?: {
+  getCategories$Response(params?: {
   }): Observable<StrictHttpResponse<Array<ContentsLimitInsuranceCategory>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ContentsLimitInsuranceService.ApiContentsLimitInsuranceItemsCategoriesGetPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, ContentsLimitInsuranceService.GetCategoriesPath, 'get');
     if (params) {
     }
 
@@ -347,34 +347,115 @@ export class ContentsLimitInsuranceService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiContentsLimitInsuranceItemsCategoriesGet$Json$Response()` instead.
+   * To access the full response (for headers, for example), `getCategories$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiContentsLimitInsuranceItemsCategoriesGet$Json(params?: {
+  getCategories(params?: {
   }): Observable<Array<ContentsLimitInsuranceCategory>> {
 
-    return this.apiContentsLimitInsuranceItemsCategoriesGet$Json$Response(params).pipe(
+    return this.getCategories$Response(params).pipe(
       map((r: StrictHttpResponse<Array<ContentsLimitInsuranceCategory>>) => r.body as Array<ContentsLimitInsuranceCategory>)
     );
   }
 
   /**
-   * Path part for operation apiContentsLimitInsuranceItemsIdDelete
+   * Path part for operation generateSampleItems
    */
-  static readonly ApiContentsLimitInsuranceItemsIdDeletePath = '/api/contents-limit-insurance-items/{id}';
+  static readonly GenerateSampleItemsPath = '/api/contents-limit-insurance-items/sample';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiContentsLimitInsuranceItemsIdDelete$Plain()` instead.
+   * To access only the response body, use `generateSampleItems$Plain()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiContentsLimitInsuranceItemsIdDelete$Plain$Response(params: {
+  generateSampleItems$Plain$Response(params?: {
+  }): Observable<StrictHttpResponse<Array<ContentsLimitInsurance>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, ContentsLimitInsuranceService.GenerateSampleItemsPath, 'post');
+    if (params) {
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: 'text/plain'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<ContentsLimitInsurance>>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `generateSampleItems$Plain$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  generateSampleItems$Plain(params?: {
+  }): Observable<Array<ContentsLimitInsurance>> {
+
+    return this.generateSampleItems$Plain$Response(params).pipe(
+      map((r: StrictHttpResponse<Array<ContentsLimitInsurance>>) => r.body as Array<ContentsLimitInsurance>)
+    );
+  }
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `generateSampleItems()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  generateSampleItems$Response(params?: {
+  }): Observable<StrictHttpResponse<Array<ContentsLimitInsurance>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, ContentsLimitInsuranceService.GenerateSampleItemsPath, 'post');
+    if (params) {
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'text/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<ContentsLimitInsurance>>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `generateSampleItems$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  generateSampleItems(params?: {
+  }): Observable<Array<ContentsLimitInsurance>> {
+
+    return this.generateSampleItems$Response(params).pipe(
+      map((r: StrictHttpResponse<Array<ContentsLimitInsurance>>) => r.body as Array<ContentsLimitInsurance>)
+    );
+  }
+
+  /**
+   * Path part for operation deleteItem
+   */
+  static readonly DeleteItemPath = '/api/contents-limit-insurance-items/{id}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `deleteItem$Plain()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  deleteItem$Plain$Response(params: {
     id: number;
   }): Observable<StrictHttpResponse<boolean>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ContentsLimitInsuranceService.ApiContentsLimitInsuranceItemsIdDeletePath, 'delete');
+    const rb = new RequestBuilder(this.rootUrl, ContentsLimitInsuranceService.DeleteItemPath, 'delete');
     if (params) {
       rb.path('id', params.id, {});
     }
@@ -392,30 +473,30 @@ export class ContentsLimitInsuranceService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiContentsLimitInsuranceItemsIdDelete$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `deleteItem$Plain$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiContentsLimitInsuranceItemsIdDelete$Plain(params: {
+  deleteItem$Plain(params: {
     id: number;
   }): Observable<boolean> {
 
-    return this.apiContentsLimitInsuranceItemsIdDelete$Plain$Response(params).pipe(
+    return this.deleteItem$Plain$Response(params).pipe(
       map((r: StrictHttpResponse<boolean>) => r.body as boolean)
     );
   }
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiContentsLimitInsuranceItemsIdDelete$Json()` instead.
+   * To access only the response body, use `deleteItem()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiContentsLimitInsuranceItemsIdDelete$Json$Response(params: {
+  deleteItem$Response(params: {
     id: number;
   }): Observable<StrictHttpResponse<boolean>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ContentsLimitInsuranceService.ApiContentsLimitInsuranceItemsIdDeletePath, 'delete');
+    const rb = new RequestBuilder(this.rootUrl, ContentsLimitInsuranceService.DeleteItemPath, 'delete');
     if (params) {
       rb.path('id', params.id, {});
     }
@@ -433,15 +514,15 @@ export class ContentsLimitInsuranceService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiContentsLimitInsuranceItemsIdDelete$Json$Response()` instead.
+   * To access the full response (for headers, for example), `deleteItem$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiContentsLimitInsuranceItemsIdDelete$Json(params: {
+  deleteItem(params: {
     id: number;
   }): Observable<boolean> {
 
-    return this.apiContentsLimitInsuranceItemsIdDelete$Json$Response(params).pipe(
+    return this.deleteItem$Response(params).pipe(
       map((r: StrictHttpResponse<boolean>) => r.body as boolean)
     );
   }

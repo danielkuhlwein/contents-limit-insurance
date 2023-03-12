@@ -18,7 +18,7 @@ namespace Redis
         /// <param name="value"></param>
         /// <param name="expirationTime"></param>
         /// <returns></returns>
-        bool SetData<T>(string key, T value, DateTimeOffset expirationTime);
+        bool SetData<T>(string key, T value, int? expirationOffset = null);
 
         /// <summary>
         /// Remove Data
@@ -26,5 +26,11 @@ namespace Redis
         /// <param name="key"></param>
         /// <returns></returns>
         bool RemoveData(string key);
+
+        /// <summary>
+        /// For testing purposes, insert sample data into the cache
+        /// </summary>
+        /// <returns></returns>
+        bool InsertSampleData();
     }
 }

@@ -1,0 +1,5 @@
+{
+  "input": "https://localhost:7233/swagger/v1/swagger.json",
+  "output": "src/app/api",
+  "skipJsonSuffix": true
+}

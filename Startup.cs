@@ -1,3 +1,6 @@
+using contents_limit_insurance.Repositories;
+using contents_limit_insurance.Services;
+using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.OpenApi.Models;
 using Redis;
 
@@ -17,7 +20,9 @@ namespace InsuranceManager
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllers();
-			services.AddScoped<ICacheService, CacheService>();
+			services.AddSingleton<ICacheService, CacheService>();
+			services.AddScoped<IContentsLimitInsuranceService, ContentsLimitInsuranceService>();
+			services.AddScoped<IContentsLimitInsuranceRepo, ContentsLimitInsuranceRepo>();
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo
@@ -25,6 +30,7 @@ namespace InsuranceManager
 					Title = "ContentsLimitInsurance",
 					Version = "v1"
 				});
+  				c.CustomOperationIds(api => ((ControllerActionDescriptor)api.ActionDescriptor).MethodInfo.Name);
 			});
 			services.AddCors(options =>
 			{

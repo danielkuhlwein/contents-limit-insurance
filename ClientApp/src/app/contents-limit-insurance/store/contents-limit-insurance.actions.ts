@@ -7,14 +7,16 @@ export const getContentsLimitInsuranceListSuccess = createAction(
   'Get Contents Limit Insurance List Success',
   props<{ payload: ContentsLimitInsurance[] }>()
 );
-export const getContentsLimitInsuranceListComplete = createAction('Get Contents Limit Insurance List Complete');
+export const getContentsLimitInsuranceListError = createAction('Get Contents Limit Insurance List Error');
 /* GET CONTENTS LIMIT INSURANCE CATEGORIES LIST */
 export const getContentsLimitInsuranceCategoriesList = createAction('Get Contents Limit Insurance Categories List');
 export const getContentsLimitInsuranceCategoriesListSuccess = createAction(
   'Get Contents Limit Insurance Categories List Success',
   props<{ payload: ContentsLimitInsuranceCategory[] }>()
 );
-export const getContentsLimitInsuranceCategoriesListComplete = createAction('Get Contents Limit Insurance Categories List Complete');
+export const getContentsLimitInsuranceCategoriesListError = createAction(
+  'Get Contents Limit Insurance Categories List Error'
+);
 /* DELETE CONTENTS LIMIT INSURANCE ITEM */
 export const deleteContentsLimitInsuranceItem = createAction(
   'Delete Contents Limit Insurance Item',
@@ -24,7 +26,7 @@ export const deleteContentsLimitInsuranceItemSuccess = createAction(
   'Delete Contents Limit Insurance Item Success',
   props<{ payload: number }>()
 );
-export const deleteContentsLimitInsuranceItemComplete = createAction('Delete Contents Limit Insurance Item Complete');
+export const deleteContentsLimitInsuranceItemError = createAction('Delete Contents Limit Insurance Item Error');
 /* ADD CONTENTS LIMIT INSURANCE ITEM */
 export const addContentsLimitInsuranceItem = createAction(
   'Add Contents Limit Insurance Item',
@@ -34,4 +36,13 @@ export const addContentsLimitInsuranceItemSuccess = createAction(
   'Add Contents Limit Insurance Item Success',
   props<{ payload: ContentsLimitInsurance }>()
 );
-export const addContentsLimitInsuranceItemComplete = createAction('Add Contents Limit Insurance Item Complete');
+export const addContentsLimitInsuranceItemError = createAction('Add Contents Limit Insurance Item Error');
+/* GENERATE SAMPLE CONTENTS LIMIT INSURANCE ITEMS */
+export const generateSampleContentsLimitInsuranceItems = createAction('Generate Sample Contents Limit Insurance Items');
+export const generateSampleContentsLimitInsuranceItemsSuccess = createAction(
+  'Generate Sample Contents Limit Insurance Items Success',
+  props<{ payload: ContentsLimitInsurance[] }>()
+);
+export const generateSampleContentsLimitInsuranceItemsError = createAction(
+  'Generate Sample Contents Limit Insurance Items Error'
+);
